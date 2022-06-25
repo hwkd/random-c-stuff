@@ -8,9 +8,9 @@ int main()
   int matrix_a[HEIGHT][WIDTH];
   int i = 0;
 
-  for (int y = 0; y < HEIGHT; y++)
+  for (size_t y = 0; y < HEIGHT; y++)
   {
-    for (int x = 0; x < WIDTH; x++)
+    for (size_t x = 0; x < WIDTH; x++)
     {
       printf("%d ", i);
       matrix_a[y][x] = i;
@@ -21,23 +21,23 @@ int main()
 
   int matrix_b[HEIGHT * WIDTH];
   i = 0;
-  for (int y = 0; y < HEIGHT; y++)
+  for (size_t y = 0; y < HEIGHT; y++)
   {
-    for (int x = 0; x < WIDTH; x++)
+    for (size_t x = 0; x < WIDTH; x++)
     {
       matrix_b[x + y * WIDTH] = i;
       i += 1;
     }
   }
 
-  for (int i = 0; i < HEIGHT * WIDTH; i++)
+  for (size_t i = 0; i < HEIGHT * WIDTH; i++)
   {
     printf("%d ", matrix_b[i]);
   }
   printf("\n");
 
   int y = 2, x = 3;
-  // Value at [2, 3] should be 13
+  // Value at [3, 2] should be 13
   printf("%d\n", matrix_a[y][x]);
   printf("%d\n", matrix_b[x + y * WIDTH]);
   printf("%s\n", matrix_a[y][x] == matrix_b[x + y * WIDTH] ? "true" : "false");
