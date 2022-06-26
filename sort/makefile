@@ -1,7 +1,7 @@
 all: build exec clean
 
 build:
-	cc *.c -o main.out
+	gcc -Wall *.c -o main.out
 
 exec: build
 	./main.out
