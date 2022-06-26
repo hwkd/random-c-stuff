@@ -50,6 +50,8 @@ int randomInt(int max)
   return rand() % max;
 }
 
+// Generates a list of specified length, and populates them with random
+// numbers, and runs the sort function with the list
 void runSortFunc(void (*sort)(int *list, size_t length), size_t length)
 {
   int *list = generateList(length);
@@ -71,6 +73,7 @@ void printList(int list[], int length, char label[])
   printf("\n");
 }
 
+// Test if the list is in sorted order (ascending)
 void test(int list[], size_t length)
 {
   bool pass = true;
