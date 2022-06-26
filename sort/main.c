@@ -15,18 +15,13 @@ int main(void)
   // Seed random value generator
   srand(time(NULL));
 
-  int list[LENGTH] = {
-      [0] = randomInt(MAX),
-      [1] = randomInt(MAX),
-      [2] = randomInt(MAX),
-      [3] = randomInt(MAX),
-      [4] = randomInt(MAX),
-      [5] = randomInt(MAX),
-      [6] = randomInt(MAX),
-      [7] = randomInt(MAX),
-      [8] = randomInt(MAX),
-      [9] = randomInt(MAX),
-  };
+  int list[LENGTH];
+
+  // Initialise list with random numbers
+  for (size_t i = 0; i < LENGTH; i++)
+  {
+    list[i] = randomInt(MAX);
+  }
 
   printList(list, LENGTH, "origin");
 
