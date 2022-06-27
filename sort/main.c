@@ -15,9 +15,9 @@
 #define LENGTH 12
 #define MAX 30
 
-int *generateList(int length);
+void runSortFunc(void (*sort)(int *list, size_t length), size_t length, int max);
+int *generateList(int length, int max);
 int randomInt(int max);
-void runSortFunc(void (*sort)(int *list, size_t length), size_t length);
 void printList(int list[], int length, char label[]);
 void test(int list[], size_t length);
 
@@ -26,19 +26,31 @@ int main(void)
   // Seed random value generator
   srand(time(NULL));
 
-  runSortFunc(insertion_sort, LENGTH);
+  runSortFunc(insertion_sort, LENGTH, MAX);
 
   return EXIT_SUCCESS;
 }
 
-int *generateList(int length)
+// Generates a list of specified length, and populates them with random
+// numbers, and runs the sort function with the list
+void runSortFunc(void (*sort)(int *list, size_t length), size_t length, int max)
 {
-  int *list = malloc(sizeof(int) * LENGTH);
+  int *list = generateList(length, max);
+  printList(list, LENGTH, "origin");
+  sort(list, LENGTH);
+  printList(list, LENGTH, "insertion sort");
+  test(list, LENGTH);
+  free(list);
+}
+
+int *generateList(int length, int max)
+{
+  int *list = malloc(sizeof(int) * length);
 
   // Initialise list with random numbers
-  for (size_t i = 0; i < LENGTH; i++)
+  for (size_t i = 0; i < length; i++)
   {
-    list[i] = randomInt(MAX);
+    list[i] = randomInt(max);
   }
 
   return list;
@@ -48,18 +60,6 @@ int *generateList(int length)
 int randomInt(int max)
 {
   return rand() % max;
-}
-
-// Generates a list of specified length, and populates them with random
-// numbers, and runs the sort function with the list
-void runSortFunc(void (*sort)(int *list, size_t length), size_t length)
-{
-  int *list = generateList(length);
-  printList(list, LENGTH, "origin");
-  sort(list, LENGTH);
-  printList(list, LENGTH, "insertion sort");
-  test(list, LENGTH);
-  free(list);
 }
 
 // Simply print the values of the given list
