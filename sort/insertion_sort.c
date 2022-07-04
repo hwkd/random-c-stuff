@@ -3,7 +3,7 @@
 /**
  * Time complexity:
  *  Worst: O(n^2)
- *  Best: O(1)
+ *  Best: O(n)
  * 
  * Space complexity: O(1)
  */
