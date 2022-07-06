@@ -40,7 +40,7 @@ int get_line(char line[], int maxline)
     line[i++] = '\n';
   }
 
-  line[i++] = '\0';
+  line[i] = '\0';
 
   return i;
 }
