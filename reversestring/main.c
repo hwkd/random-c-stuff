@@ -3,16 +3,34 @@
 
 #define MAXLINE 1000
 
+int get_line(char line[], int max);
 void reverse_string(char to[], char from[]);
 
 int main(void)
 {
   char line[MAXLINE];
+  char rline[MAXLINE];
 
-  reverse_string(line, "hello world");
-  printf("%s\n", line);
+  int len;
+  while ((len = get_line(line, MAXLINE)) > 0)
+  {
+    reverse_string(rline, line);
+    printf("%s\n", rline);
+  }
 
   return EXIT_SUCCESS;
+}
+
+int get_line(char line[], int max)
+{
+  int i, c;
+
+  for (i = 0; i < max - 1 && (c = getchar()) != EOF && c != '\n'; i++)
+    line[i] = c;
+
+  line[i] = '\0';
+
+  return i;
 }
 
 void reverse_string(char to[], char from[])
