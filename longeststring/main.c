@@ -37,11 +37,10 @@ int get_line(char line[], int maxline)
 
   if (c == '\n')
   {
-    line[i] = '\n';
-    i++;
+    line[i++] = '\n';
   }
 
-  line[i] = '\0';
+  line[i++] = '\0';
 
   return i;
 }
